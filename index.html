@@ -1,0 +1,1464 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Di Atas Awan ✨ Pesan Rahasia Untukmu</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Quicksand', 'Plus Jakarta Sans', 'sans-serif'],
+                        script: ['Dancing Script', 'cursive'],
+                    },
+                    colors: {
+                        cloud: {
+                            pink: '#ffd1dc',
+                            deepPink: '#ff8fab',
+                            rose: '#fb6f92',
+                            blue: '#bde0fe',
+                            deepBlue: '#a2d2ff',
+                            sky: '#eaf4f4',
+                            gold: '#ffe57f',
+                        }
+                    },
+                    animation: {
+                        'float-slow': 'floatSlow 8s ease-in-out infinite',
+                        'float-medium': 'floatMedium 5s ease-in-out infinite',
+                        'pulse-glow': 'pulseGlow 3s ease-in-out infinite',
+                        'twinkle': 'twinkle 2.5s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        floatSlow: {
+                            '0%, 100%': { transform: 'translateY(0px) translateX(0px)' },
+                            '50%': { transform: 'translateY(-14px) translateX(8px)' },
+                        },
+                        floatMedium: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-8px)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { boxShadow: '0 0 15px rgba(255, 143, 171, 0.4), 0 0 30px rgba(162, 210, 255, 0.3)' },
+                            '50%': { boxShadow: '0 0 25px rgba(255, 143, 171, 0.75), 0 0 45px rgba(162, 210, 255, 0.6)' },
+                        },
+                        twinkle: {
+                            '0%, 100%': { opacity: 0.4, transform: 'scale(0.9) rotate(0deg)' },
+                            '50%': { opacity: 1, transform: 'scale(1.25) rotate(15deg)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        * {
+            user-select: none;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+            font-family: 'Quicksand', sans-serif;
+        }
+
+        /* Dynamic Dreamy Sky Gradient Background */
+        .sky-bg {
+            background: linear-gradient(165deg, #8ecae6 0%, #bde0fe 28%, #ffd1dc 68%, #fff0f5 95%, #ffffff 100%);
+            background-size: 200% 200%;
+            animation: skyShift 18s ease infinite;
+            transition: filter 1s ease, background 1.2s ease;
+        }
+
+        .sky-bg.mood-warm {
+            background: linear-gradient(165deg, #a2d2ff 0%, #ffc8dd 40%, #ffafcc 75%, #fff5f8 100%);
+        }
+
+        .sky-bg.mood-bright {
+            background: linear-gradient(165deg, #72efdd 0%, #a2d2ff 35%, #ffd1dc 75%, #fff9db 100%);
+        }
+
+        @keyframes skyShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Frosted Glassmorphism Card */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.62);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1.5px solid rgba(255, 255, 255, 0.85);
+            box-shadow: 
+                0 20px 50px rgba(255, 143, 171, 0.18),
+                0 10px 25px rgba(162, 210, 255, 0.25),
+                inset 0 0 20px rgba(255, 255, 255, 0.6);
+        }
+
+        .glass-pill {
+            background: rgba(255, 255, 255, 0.72);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 8px 24px rgba(251, 111, 146, 0.15);
+        }
+
+        /* Buttons */
+        .btn-dreamy {
+            background: linear-gradient(135deg, #ff8fab 0%, #fb6f92 50%, #ff9ebb 100%);
+            background-size: 200% auto;
+            color: white;
+            border: 2px solid rgba(255, 255, 255, 0.85);
+            box-shadow: 0 10px 25px -5px rgba(251, 111, 146, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.5);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .btn-dreamy:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 30px -5px rgba(251, 111, 146, 0.65), inset 0 2px 6px rgba(255, 255, 255, 0.7);
+            background-position: right center;
+        }
+
+        .btn-dreamy:active {
+            transform: translateY(1px) scale(0.98);
+        }
+
+        .btn-sky {
+            background: linear-gradient(135deg, #ffffff 0%, #f0f8ff 100%);
+            color: #5c6b73;
+            border: 1.5px solid rgba(255, 255, 255, 0.95);
+            box-shadow: 0 6px 18px rgba(162, 210, 255, 0.3);
+            transition: all 0.25s ease;
+        }
+
+        .btn-sky:hover {
+            background: linear-gradient(135deg, #fff0f5 0%, #e8f4fd 100%);
+            color: #fb6f92;
+            border-color: #ffcad4;
+            transform: translateY(-2px);
+        }
+
+        /* Cloud Game Items */
+        .cloud-item {
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            cursor: pointer;
+        }
+        .cloud-item:hover {
+            transform: scale(1.07) translateY(-4px);
+            filter: drop-shadow(0 12px 20px rgba(255, 143, 171, 0.35));
+        }
+        .cloud-item.popped {
+            transform: scale(0.85);
+            opacity: 0.75;
+        }
+
+        /* Soundwave equalizer animation */
+        .bar {
+            width: 3px;
+            background: #fb6f92;
+            border-radius: 3px;
+            animation: sound 0ms -800ms linear infinite alternate;
+            transition: height 0.2s;
+        }
+        .playing .bar-1 { animation-duration: 474ms; height: 14px; }
+        .playing .bar-2 { animation-duration: 433ms; height: 18px; }
+        .playing .bar-3 { animation-duration: 407ms; height: 12px; }
+        .playing .bar-4 { animation-duration: 458ms; height: 16px; }
+        @keyframes sound {
+            0% { height: 4px; opacity: 0.5; }
+            100% { height: 17px; opacity: 1; }
+        }
+
+        /* Stage transitions */
+        .stage-panel {
+            transition: opacity 0.5s ease, transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .stage-hidden {
+            display: none !important;
+            opacity: 0;
+            pointer-events: none;
+        }
+        .stage-active {
+            display: block !important;
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            position: relative;
+        }
+
+        /* Paper Plane / Sky Lantern Float Up */
+        @keyframes flyToSky {
+            0% { transform: translateY(0) scale(1) rotate(0deg); opacity: 1; }
+            40% { transform: translateY(-80px) scale(1.08) rotate(-5deg); opacity: 0.95; }
+            100% { transform: translateY(-450px) scale(0.3) rotate(12deg); opacity: 0; }
+        }
+        .fly-away {
+            animation: flyToSky 3.2s cubic-bezier(0.25, 0.8, 0.25, 1) forwards;
+        }
+
+        /* Custom Scrollbar for modals/cards */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 143, 171, 0.5);
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body class="sky-bg relative min-h-screen w-full flex flex-col justify-between items-center overflow-x-hidden text-slate-700 selection:bg-pink-200 selection:text-pink-800">
+
+    <!-- 1. INTERACTIVE PARTICLE CANVAS (Stardust, Hearts, Sakura & Touch Ripples) -->
+    <canvas id="skyCanvas" class="fixed inset-0 pointer-events-none z-10"></canvas>
+
+    <!-- 2. PARALLAX FLOATING CLOUDS LAYER -->
+    <div id="parallaxContainer" class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <!-- Top Left Soft Cloud -->
+        <svg data-depth="0.03" class="parallax-layer absolute -top-12 -left-16 w-72 md:w-96 opacity-65 text-white fill-current blur-[1px]" viewBox="0 0 200 120">
+            <path d="M45,95 Q20,95 20,72 Q20,52 40,50 Q48,22 78,22 Q110,22 120,46 Q135,38 152,48 Q175,55 172,78 Q170,95 145,95 Z"/>
+        </svg>
+        <!-- Top Right Pinkish Glow Cloud -->
+        <svg data-depth="0.05" class="parallax-layer absolute top-12 -right-20 w-80 md:w-[420px] opacity-55 text-pink-100 fill-current blur-[2px]" viewBox="0 0 200 120">
+            <path d="M35,95 Q15,95 15,75 Q15,58 32,54 Q42,25 75,25 Q105,25 118,48 Q138,40 155,52 Q180,60 175,80 Q172,95 148,95 Z"/>
+        </svg>
+        <!-- Bottom Left Fluffy Cloud -->
+        <svg data-depth="0.07" class="parallax-layer absolute bottom-10 -left-20 w-80 md:w-[460px] opacity-75 text-white fill-current" viewBox="0 0 200 120">
+            <path d="M40,100 Q15,100 15,76 Q15,55 38,52 Q50,20 85,22 Q118,24 128,52 Q148,44 164,58 Q185,66 180,85 Q176,100 150,100 Z"/>
+        </svg>
+        <!-- Bottom Right Sky Blue Cloud -->
+        <svg data-depth="0.04" class="parallax-layer absolute -bottom-14 -right-12 w-72 md:w-96 opacity-70 text-sky-50 fill-current" viewBox="0 0 200 120">
+            <path d="M45,95 Q20,95 20,72 Q20,52 40,50 Q48,22 78,22 Q110,22 120,46 Q135,38 152,48 Q175,55 172,78 Q170,95 145,95 Z"/>
+        </svg>
+    </div>
+
+    <!-- 3. TOP NAVIGATION BAR: AUDIO CONTROL & SECRET STAR EASTER EGG (#1) -->
+    <header class="w-full max-w-4xl px-4 pt-4 pb-2 flex items-center justify-between z-30">
+        <!-- Music Box Controller Pill -->
+        <div class=" flex items-center gap-2">
+            <button id="musicToggleBtn" onclick="toggleMusic()" class="glass-pill px-3.5 py-2 rounded-full flex items-center gap-2.5 text-xs md:text-sm font-semibold text-slate-700 hover:text-rose-500 transition-all shadow-sm group" title="Putar / Jeda Melodi Kotak Musik">
+                <div id="soundWave" class="flex items-end gap-[2.5px] h-4 w-4 justify-center">
+                    <span class="bar bar-1 h-1.5"></span>
+                    <span class="bar bar-2 h-2.5"></span>
+                    <span class="bar bar-3 h-1"></span>
+                    <span class="bar bar-4 h-2"></span>
+                </div>
+                <span id="musicStatusText">Musik Langit: Mati</span>
+            </button>
+
+            <!-- Melody Mood Switcher -->
+            <button id="melodyMoodBtn" onclick="cycleMelodyMood()" class="hidden sm:flex glass-pill px-3 py-2 rounded-full items-center gap-1.5 text-xs font-medium text-slate-600 hover:text-sky-600 transition-all" title="Ganti Nuansa Nada">
+                <span>✨</span>
+                <span id="melodyMoodText">Nada: Senja Manis</span>
+            </button>
+        </div>
+
+        <!-- SECRET EASTER EGG #1: Twinkling Golden-Pink Star (Requires 3 clicks) -->
+        <div class="relative flex items-center">
+            <span id="starHintBadge" class="mr-2 px-2.5 py-0.5 rounded-full bg-white/80 text-[11px] font-semibold text-rose-500 shadow-sm opacity-0 transition-opacity duration-300 pointer-events-none">
+                ✨ 0/3
+            </span>
+            <button id="secretStarBtn" onclick="handleSecretStarClick(event)" class="relative p-2.5 rounded-full hover:bg-white/30 transition-all group focus:outline-none" aria-label="Bintang Rahasia">
+                <!-- Outer Aura -->
+                <span class="absolute inset-1 rounded-full bg-amber-200/50 blur-md animate-ping"></span>
+                <!-- Star SVG -->
+                <svg class="w-7 h-7 text-amber-300 drop-shadow-[0_0_10px_rgba(255,215,0,0.9)] animate-twinkle group-hover:scale-125 transition-transform" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M12 1L14.8 8.5L22.5 9.2L16.5 14.2L18.5 21.8L12 17.5L5.5 21.8L7.5 14.2L1.5 9.2L9.2 8.5L12 1Z" stroke="#fff" stroke-width="1.2"/>
+                </svg>
+                <!-- Subtle tiny dot indicator -->
+                <span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-rose-400 ring-2 ring-white"></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- 4. MAIN INTERACTIVE STORY CONTAINER -->
+    <main class="w-full max-w-xl px-4 py-4 my-auto flex flex-col items-center justify-center z-20 relative min-h-[480px]">
+
+        <!-- Progress Breadcrumb Dots -->
+        <div id="progressDots" class="flex items-center gap-2 mb-4 opacity-0 transition-opacity duration-500">
+            <span id="dot-1" class="w-2.5 h-2.5 rounded-full bg-rose-400 transition-all duration-300 w-6"></span>
+            <span id="dot-2" class="w-2.5 h-2.5 rounded-full bg-white/70 transition-all duration-300"></span>
+            <span id="dot-3" class="w-2.5 h-2.5 rounded-full bg-white/70 transition-all duration-300"></span>
+            <span id="dot-4" class="w-2.5 h-2.5 rounded-full bg-white/70 transition-all duration-300"></span>
+        </div>
+
+        <!-- ==========================================
+             STAGE 1: THE CLOUD GATE (LAYAR PEMBUKA)
+             ========================================== -->
+        <section id="stage1" class="stage-panel stage-active w-full glass-card rounded-3xl p-6 sm:p-9 text-center relative">
+            <!-- Decorative Top Cloud Badge -->
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/85 border border-pink-200 shadow-sm text-rose-500 text-xs font-bold tracking-wide uppercase mb-5 animate-float-medium">
+                <span>🌤️</span>
+                <span>Titipan Sepotong Langit</span>
+                <span>✨</span>
+            </div>
+
+            <!-- Cute Floating Cloud + Envelope Illustration -->
+            <div class="relative w-32 h-24 mx-auto mb-3 flex items-center justify-center">
+                <div class="absolute inset-0 bg-gradient-to-tr from-pink-300/40 to-sky-300/40 rounded-full blur-xl animate-pulse"></div>
+                <svg class="w-32 h-24 text-white drop-shadow-[0_10px_15px_rgba(162,210,255,0.5)] animate-float-slow" viewBox="0 0 160 100" fill="currentColor">
+                    <path d="M38,82 Q16,82 16,62 Q16,44 34,42 Q44,16 72,16 Q100,16 110,38 Q128,32 140,44 Q156,52 152,68 Q148,82 128,82 Z" />
+                </svg>
+                <!-- Floating Love Letter Icon on Cloud -->
+                <div class="absolute -top-1 right-4 bg-gradient-to-br from-rose-400 to-pink-500 text-white w-10 h-10 rounded-2xl shadow-lg rotate-12 animate-bounce flex items-center justify-center text-lg">
+                    💌
+                </div>
+            </div>
+
+            <h1 class="font-script text-3xl sm:text-5xl text-rose-500 drop-shadow-sm mb-3">
+                Halo kamu yang di bawah sana...
+            </h1>
+
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-4 font-medium px-2">
+                "Ada titipan sepotong langit buat seseorang yang hari ini kelihatannya butuh senyum ekstra. Boleh masuk sebentar?"
+            </p>
+
+            <p class="text-xs sm:text-sm italic text-slate-500/90 bg-white/60 py-2 px-4 rounded-xl inline-block mb-6 border border-white/80">
+                ✨ Dari seseorang yang diam-diam memperhatikan langitmu.
+            </p>
+
+            <div>
+                <button onclick="enterCloudGate(event)" class="btn-dreamy w-full sm:w-auto px-8 py-3.5 rounded-2xl font-bold text-base sm:text-lg flex items-center justify-center gap-2.5 mx-auto animate-pulse-glow">
+                    <span>Sibak Awan & Masuk</span>
+                    <span>✨</span>
+                </button>
+            </div>
+
+            <p class="text-[11px] text-slate-400 mt-4 flex items-center justify-center gap-1">
+                <span>🔊</span>
+                <span>Ketuk tombol untuk menyalakan melodi kotak musik otomatis</span>
+            </p>
+        </section>
+
+        <!-- ==========================================
+             STAGE 2: TANYA KABAR INTERAKTIF (CHECK-IN)
+             ========================================== -->
+        <section id="stage2" class="stage-panel stage-hidden w-full glass-card rounded-3xl p-6 sm:p-8 text-center">
+            <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-sky-100/80 text-sky-600 text-xs font-bold mb-3">
+                <span>💭</span>
+                <span>Sesi Tanya Kabar Langit</span>
+            </div>
+
+            <h2 class="font-script text-3xl sm:text-4xl text-rose-500 mb-2">
+                Jujur dulu yuk...
+            </h2>
+
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-6">
+                Sebelum melangkah lebih jauh di atas awan ini, hari ini dunia lagi baik sama kamu, atau lagi bikin capek?
+            </p>
+
+            <!-- 3 Mood Options -->
+            <div class="grid grid-cols-1 gap-3 mb-5 text-left">
+                <button onclick="selectMood('tired')" id="moodBtn-tired" class="btn-sky p-3.5 sm:p-4 rounded-2xl flex items-center gap-3.5 group">
+                    <span class="w-11 h-11 rounded-xl bg-pink-100 text-rose-500 flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition-transform">
+                        🥺
+                    </span>
+                    <div class="flex-1">
+                        <div class="font-bold text-slate-700 text-sm sm:text-base group-hover:text-rose-500 transition-colors">Lagi capek banget...</div>
+                        <div class="text-xs text-slate-400">Rasanya hari ini agak menguras energi</div>
+                    </div>
+                    <span class="text-slate-400 group-hover:translate-x-1 transition-transform font-bold">➔</span>
+                </button>
+
+                <button onclick="selectMood('happy')" id="moodBtn-happy" class="btn-sky p-3.5 sm:p-4 rounded-2xl flex items-center gap-3.5 group">
+                    <span class="w-11 h-11 rounded-xl bg-amber-100 text-amber-500 flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition-transform">
+                        🥰
+                    </span>
+                    <div class="flex-1">
+                        <div class="font-bold text-slate-700 text-sm sm:text-base group-hover:text-rose-500 transition-colors">Lagi seneng & baik!</div>
+                        <div class="text-xs text-slate-400">Hari ini berjalan manis dan menyenangkan</div>
+                    </div>
+                    <span class="text-slate-400 group-hover:translate-x-1 transition-transform font-bold">➔</span>
+                </button>
+
+                <button onclick="selectMood('lonely')" id="moodBtn-lonely" class="btn-sky p-3.5 sm:p-4 rounded-2xl flex items-center gap-3.5 group">
+                    <span class="w-11 h-11 rounded-xl bg-sky-100 text-sky-500 flex items-center justify-center text-2xl shrink-0 group-hover:scale-110 transition-transform">
+                        ☁️
+                    </span>
+                    <div class="flex-1">
+                        <div class="font-bold text-slate-700 text-sm sm:text-base group-hover:text-rose-500 transition-colors">Biasa aja, tapi butuh ditemenin</div>
+                        <div class="text-xs text-slate-400">Pengen suasana yang tenang dan hangat</div>
+                    </div>
+                    <span class="text-slate-400 group-hover:translate-x-1 transition-transform font-bold">➔</span>
+                </button>
+            </div>
+
+            <!-- Dynamic Empathy Response Box (Appears after picking a mood) -->
+            <div id="moodResponseBox" class="hidden bg-white/80 border-2 border-pink-200/80 rounded-2xl p-4 sm:p-5 text-center shadow-inner mb-5 transition-all">
+                <div id="moodResponseEmoji" class="text-3xl mb-2">💖</div>
+                <p id="moodResponseText" class="text-slate-700 text-sm sm:text-base leading-relaxed font-medium mb-4"></p>
+
+                <!-- Virtual Cloud Hug Button (Extra interactive comfort) -->
+                <div class="flex flex-wrap items-center justify-center gap-2.5">
+                    <button onclick="sendCloudHug(event)" class="px-4 py-2 rounded-xl bg-pink-100 hover:bg-pink-200 text-rose-600 font-bold text-xs sm:text-sm inline-flex items-center gap-1.5 transition-all active:scale-95">
+                        <span>🤍</span>
+                        <span id="hugBtnLabel">Terima Pelukan Awan Hangat 🫂</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Proceed to Mini-Game Button -->
+            <button id="toStage3Btn" onclick="goToStage(3)" class="hidden btn-dreamy w-full py-3.5 px-6 rounded-2xl font-bold text-sm sm:text-base items-center justify-center gap-2 mx-auto">
+                <span>Lanjut ke Misi Awan Rahasia</span>
+                <span>✨</span>
+            </button>
+        </section>
+
+        <!-- ==========================================
+             STAGE 3: COMBINED MINI-GAME (OPSI B + OPSI C)
+             ========================================== -->
+        <section id="stage3" class="stage-panel stage-hidden w-full glass-card rounded-3xl p-5 sm:p-7 text-center">
+            
+            <!-- PHASE 3A: HIDE & SEEK DI BALIK AWAN (OPSI B) -->
+            <div id="gamePhaseA">
+                <div class="flex items-center justify-between bg-white/70 px-4 py-2 rounded-2xl border border-white mb-3">
+                    <span class="text-xs font-bold text-slate-600 flex items-center gap-1.5">
+                        <span>🔑</span>
+                        Kunci Hati Terkumpul:
+                    </span>
+                    <div class="flex items-center gap-1.5" id="keyCounterIcons">
+                        <span class="key-slot w-6 h-6 rounded-full bg-pink-100 border border-pink-300 flex items-center justify-center text-xs text-pink-300 transition-all">💖</span>
+                        <span class="key-slot w-6 h-6 rounded-full bg-pink-100 border border-pink-300 flex items-center justify-center text-xs text-pink-300 transition-all">💖</span>
+                        <span class="key-slot w-6 h-6 rounded-full bg-pink-100 border border-pink-300 flex items-center justify-center text-xs text-pink-300 transition-all">💖</span>
+                    </div>
+                </div>
+
+                <h2 class="font-script text-3xl text-rose-500 mb-1">
+                    Cari 3 Kunci Hati di Balik Awan
+                </h2>
+                <p class="text-xs sm:text-sm text-slate-600 mb-4">
+                    Tiga Kunci Hati nggak sengaja ketiup angin dan sembunyi di antara 9 awan ini. Ketuk awannya satu per satu ya!
+                </p>
+
+                <!-- 9 Interactive Clouds Grid -->
+                <div id="cloudGrid" class="grid grid-cols-3 gap-2.5 sm:gap-3.5 my-3">
+                    <!-- Clouds dynamically generated by JS -->
+                </div>
+
+                <!-- Compliment / Decoy Toast Box -->
+                <div id="cloudMessageToast" class="min-h-[68px] flex items-center justify-center bg-white/80 border border-pink-200 rounded-2xl px-4 py-2.5 mt-3 text-xs sm:text-sm text-slate-700 font-medium shadow-sm">
+                    <span class="text-slate-400 italic">✨ Ketuk salah satu gumpalan awan di atas...</span>
+                </div>
+            </div>
+
+            <!-- PHASE 3B: PERTANYAAN PENENTU & TOMBOL KABUR (OPSI C) -->
+            <div id="gamePhaseB" class="hidden py-2">
+                <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-amber-100 text-amber-700 text-xs font-bold mb-3">
+                    <span>🔓</span>
+                    <span>3/3 Kunci Hati Berhasil Ditemukan!</span>
+                </div>
+
+                <h2 class="font-script text-3xl sm:text-4xl text-rose-500 mb-2">
+                    Satu Pertanyaan Kejujuran...
+                </h2>
+
+                <p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-6 px-2">
+                    Kuncinya udah lengkap! Tapi sebelum surat utamanya kebuka, jawab jujur dulu: <br>
+                    <strong class="text-rose-500">Kamu beneran penasaran dan senyum-senyum dikit nggak pas baca ini dari tadi?</strong>
+                </p>
+
+                <!-- Arena for Runaway Button -->
+                <div id="runawayArena" class="relative w-full min-h-[160px] sm:min-h-[145px] bg-white/45 rounded-2xl border border-white/80 p-4 flex flex-col sm:flex-row items-center justify-center gap-4 overflow-hidden">
+                    <!-- Positive Button -->
+                    <button onclick="unlockFinalLetter(event)" id="yesSmileBtn" class="btn-dreamy px-6 py-3.5 rounded-2xl font-bold text-sm sm:text-base flex items-center gap-2 z-20 shadow-lg">
+                        <span>Iya, senyum-senyum dikit 😊💕</span>
+                    </button>
+
+                    <!-- Runaway Negative Button -->
+                    <button id="runawayNoBtn" 
+                            onmouseenter="dodgeButton(event)" 
+                            ontouchstart="dodgeButton(event)" 
+                            onclick="dodgeButton(event)"
+                            class="btn-sky px-5 py-3 rounded-2xl font-semibold text-xs sm:text-sm text-slate-600 whitespace-nowrap transition-all duration-200 z-10">
+                        Enggak, biasa aja 😜
+                    </button>
+                </div>
+
+                <p id="runawaySubtext" class="text-[11px] text-slate-400 mt-3 italic">
+                    *Coba aja klik tombol "Enggak" kalau bisa kena~
+                </p>
+            </div>
+        </section>
+
+        <!-- ==========================================
+             STAGE 4: FINAL ROMANTIC LETTER & SKY WISH
+             ========================================== -->
+        <section id="stage4" class="stage-panel stage-hidden w-full glass-card rounded-3xl p-6 sm:p-8 text-center relative">
+            <div class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-rose-100 text-rose-600 text-xs font-bold mb-3">
+                <span>💌</span>
+                <span>Surat Rahasia Dari Atas Awan</span>
+            </div>
+
+            <h2 class="font-script text-3xl sm:text-4xl text-rose-500 mb-4">
+                Untuk Kamu yang Manisnya Nggak Pernah Luntur,
+            </h2>
+
+            <!-- Romantic Letter Content -->
+            <div class="bg-white/75 border border-pink-100 rounded-2xl p-5 text-left space-y-3.5 text-slate-700 text-sm sm:text-[15px] leading-relaxed shadow-inner mb-6 max-h-72 overflow-y-auto overflow-x-hidden">
+                <p>
+                    Hai... makasih ya udah mau mampir sebentar ke atas awan ini dan nyelesain misi kecil barusan. Aku seneng banget kalau halaman kecil ini berhasil bikin garis bibir kamu naik walau cuma beberapa senti.
+                </p>
+                <p>
+                    Kadang aku suka mikir, gimana bisa kehadiran seseorang itu punya efek menenangkan kayak ngelihat langit sore yang cerah? Dan jujur aja, buatku, <strong class="text-rose-500">seseorang itu adalah kamu.</strong>
+                </p>
+                <p>
+                    Apa pun yang lagi kamu kejar atau hadapi sekarang, jangan lupa jaga kesehatan ya. Jangan sering begadang kalau nggak penting, jangan lupa makan tepat waktu, dan jangan terlalu keras sama diri sendiri.
+                </p>
+                <p>
+                    Kalau suatu saat kamu ngerasa hari kamu mendung, inget aja kalau di bawah langit yang sama, selalu ada seseorang yang diam-diam mendoakan kebahagiaan kamu setiap hari.
+                </p>
+                <div class="pt-2 border-t border-pink-100 flex items-center justify-between text-xs text-rose-500 font-bold">
+                    <span>Tetap jadi kamu yang hangat ya ✨</span>
+                    <span class="font-script text-lg">— Pengagum Langitmu</span>
+                </div>
+            </div>
+
+            <!-- Interactive Reply: Titip Pesan Balik ke Awan (Connected to WhatsApp) -->
+            <div id="skyWishBox" class="bg-gradient-to-br from-sky-50/90 to-pink-50/90 border border-white rounded-2xl p-4 text-left shadow-sm mb-4">
+                <label for="wishInput" class="block text-xs font-bold text-slate-600 mb-2 flex items-center gap-1.5">
+                    <span>🕊️</span>
+                    <span>Titip Pesan Balik atau Harapan ke Awan (Langsung Terkirim ke WA):</span>
+                </label>
+                <div class="flex flex-col sm:flex-row gap-2">
+                    <input id="wishInput" type="text" maxlength="120" placeholder="Tulis balasan singkat atau harapanmu di sini..." 
+                           onkeydown="if(event.key === 'Enter') sendSkyWish(event)"
+                           class="w-full px-3.5 py-2.5 rounded-xl bg-white/90 border border-pink-200 text-sm text-slate-700 focus:outline-none focus:ring-2 focus:ring-rose-300 select-text">
+                    <button onclick="sendSkyWish(event)" class="btn-dreamy px-5 py-2.5 rounded-xl font-bold text-xs sm:text-sm whitespace-nowrap flex items-center justify-center gap-1.5 shrink-0">
+                        <span>Terbangkan</span>
+                        <span>✈️</span>
+                    </button>
+                </div>
+                <div id="wishSentContainer" class="hidden mt-3 p-3 rounded-xl bg-white/85 border border-pink-200 text-center">
+                    <p id="wishSentFeedback" class="text-xs text-rose-500 font-semibold mb-2"></p>
+                    <a id="waDirectLink" href="#" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs shadow-sm transition-all">
+                        <span>💬</span>
+                        <span>Buka WhatsApp & Kirim Pesan Sekarang</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Action Footer Buttons -->
+            <div class="flex flex-wrap items-center justify-center gap-2.5 text-xs">
+                <button onclick="spawnHeartShower()" class="btn-sky px-4 py-2.5 rounded-xl font-bold flex items-center gap-1.5 text-rose-500">
+                    <span>💖</span>
+                    <span>Hujani Hati & Bintang</span>
+                </button>
+                <button onclick="goToStage(1)" class="btn-sky px-4 py-2.5 rounded-xl font-semibold flex items-center gap-1.5">
+                    <span>🔄</span>
+                    <span>Ulangi Dari Awal</span>
+                </button>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 5. FOOTER & SECRET EASTER EGG #2 (Tiny Pink Cloud in Bottom Corner) -->
+    <footer class="w-full max-w-4xl px-4 pb-4 pt-2 flex items-center justify-between z-30 text-xs text-slate-500">
+        <div class="glass-pill px-3 py-1.5 rounded-full text-[11px] font-medium text-slate-600 flex items-center gap-1.5">
+            <span class="w-2 h-2 rounded-full bg-rose-400 animate-ping"></span>
+            <span>Ketuk langit mana saja untuk taburan bintang ✨</span>
+        </div>
+
+        <!-- SECRET EASTER EGG #2: Mysterious Pink Cloud Button -->
+        <button onclick="openClueModal(event)" class="group relative flex items-center gap-1.5 glass-pill px-3.5 py-1.5 rounded-full hover:bg-pink-100/90 transition-all border border-pink-200/80 shadow-sm" title="Awan Pink Rahasia">
+            <svg class="w-6 h-4 text-rose-400 fill-current group-hover:scale-110 transition-transform" viewBox="0 0 64 40">
+                <path d="M16,34 Q6,34 6,25 Q6,17 15,16 Q19,6 30,6 Q41,6 45,15 Q52,13 57,18 Q62,22 60,29 Q58,34 50,34 Z"/>
+            </svg>
+            <span class="text-[11px] font-bold text-rose-500">Awan Rahasia?</span>
+        </button>
+    </footer>
+
+    <!-- ==========================================
+         MODAL 1: SECRET STAR CAPSULE (Unlocked after 3 clicks on Top-Right Star)
+         ========================================== -->
+    <div id="secretStarModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-900/30 backdrop-blur-md transition-opacity">
+        <div class="glass-card max-w-md w-full rounded-3xl p-6 sm:p-8 text-center relative border-2 border-amber-200 animate-float-medium">
+            <button onclick="closeModal('secretStarModal')" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/80 hover:bg-rose-100 text-slate-600 hover:text-rose-500 flex items-center justify-center transition-colors">
+                <i class="ph-bold ph-x"></i>
+            </button>
+
+            <div class="w-16 h-16 rounded-2xl bg-gradient-to-tr from-amber-300 to-rose-400 text-white flex items-center justify-center mx-auto mb-4 shadow-lg">
+                <i class="ph-fill ph-shooting-star text-3xl"></i>
+            </div>
+
+            <span class="px-3 py-1 rounded-full bg-amber-100 text-amber-700 text-[11px] font-bold uppercase tracking-wider">
+                ✨ Easter Egg Terbuka (3/3 Ketukan) ✨
+            </span>
+
+            <h3 class="font-script text-3xl text-rose-500 mt-2 mb-3">
+                Kapsul Pengakuan Rahasia
+            </h3>
+
+            <div class="bg-white/80 rounded-2xl p-4 text-slate-700 text-sm leading-relaxed space-y-2.5 text-left border border-amber-200/80 mb-5">
+                <p>
+                    <strong>Wah, kamu jeli banget nemuin bintang yang berkedip paling terang di pojok langit!</strong> 🌟
+                </p>
+                <p>
+                    Karena kamu berhasil membuka kapsul rahasia ini, aku kasih satu pengakuan jujur:
+                </p>
+                <p class="italic text-rose-600 font-medium bg-pink-50/90 p-3 rounded-xl border border-pink-200">
+                    "Sebenernya setiap kali kita ngobrol atau berpapasan, aku selalu nyari alasan kecil biar bisa ngobrol lebih lama sama kamu. Senyum kamu itu beneran moodbooster paling ampuh buatku."
+                </p>
+            </div>
+
+            <button onclick="closeModal('secretStarModal')" class="btn-dreamy w-full py-3 rounded-xl font-bold text-sm">
+                Simpan Rahasia Ini di Hati 💖
+            </button>
+        </div>
+    </div>
+
+    <!-- ==========================================
+         MODAL 2: CLUE PENGIRIM ANONIM (Bottom-Right Pink Cloud)
+         ========================================== -->
+    <div id="clueModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-900/30 backdrop-blur-md transition-opacity">
+        <div class="glass-card max-w-md w-full rounded-3xl p-6 sm:p-8 text-center relative border-2 border-pink-200">
+            <button onclick="closeModal('clueModal')" class="absolute top-4 right-4 w-8 h-8 rounded-full bg-white/80 hover:bg-rose-100 text-slate-600 hover:text-rose-500 flex items-center justify-center transition-colors">
+                <i class="ph-bold ph-x"></i>
+            </button>
+
+            <div class="w-14 h-14 rounded-2xl bg-pink-100 text-rose-500 flex items-center justify-center mx-auto mb-3 shadow-sm">
+                <i class="ph-fill ph-detective text-3xl"></i>
+            </div>
+
+            <h3 class="font-script text-3xl text-rose-500 mb-1">
+                Siapa Pengirim Langit Ini?
+            </h3>
+            <p class="text-xs text-slate-500 mb-4">
+                Penasaran ya? Ini 3 petunjuk rahasia tentang seseorang di balik layar:
+            </p>
+
+            <div class="space-y-2.5 text-left text-xs sm:text-sm text-slate-700 mb-5">
+                <div class="bg-white/80 p-3 rounded-xl border border-pink-100 flex items-start gap-2.5">
+                    <span class="bg-rose-400 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">1</span>
+                    <span>Orang yang selalu merhatiin detail kecil tentang kamu, bahkan saat kamu nggak sadar.</span>
+                </div>
+                <div class="bg-white/80 p-3 rounded-xl border border-pink-100 flex items-start gap-2.5">
+                    <span class="bg-sky-400 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">2</span>
+                    <span>Seseorang yang langsung senyum setiap kali nama kamu muncul di notifikasi HP-nya.</span>
+                </div>
+                <div class="bg-white/80 p-3 rounded-xl border border-pink-100 flex items-start gap-2.5">
+                    <span class="bg-amber-400 text-white w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">3</span>
+                    <span>Orang yang sengaja ngirim link halaman awan ini khusus buat bikin hari kamu lebih manis.</span>
+                </div>
+            </div>
+
+            <!-- Secret Code / Initial Reveal Box -->
+            <div id="secretIdentityReveal" class="bg-pink-50/90 border border-pink-200 rounded-2xl p-3.5 mb-4">
+                <p class="text-xs text-slate-600 mb-2 font-medium">Masih belum yakin? Klik tombol di bawah buat buka kode ekstra:</p>
+                <button onclick="revealExtraClue()" id="revealClueBtn" class="px-4 py-1.5 rounded-lg bg-white text-rose-500 font-bold text-xs border border-pink-200 shadow-sm hover:bg-rose-500 hover:text-white transition-colors">
+                    🔓 Buka Kode Petunjuk Terakhir
+                </button>
+                <p id="extraClueText" class="hidden text-xs sm:text-sm font-bold text-rose-600 mt-2">
+                    "Coba tengok chat terakhir yang ngirimin kamu link ini... nah, orang itulah yang lagi mikirin kamu sekarang 😊✨"
+                </p>
+            </div>
+
+            <button onclick="closeModal('clueModal')" class="btn-dreamy w-full py-2.5 rounded-xl font-bold text-sm">
+                Aku Udah Tau Orangnya! 🥰
+            </button>
+        </div>
+    </div>
+
+    <!-- Floating Paper Plane Animation Container -->
+    <div id="flyingLanternContainer" class="fixed inset-0 pointer-events-none z-40 flex items-center justify-center"></div>
+
+    <!-- ==========================================
+         JAVASCRIPT: AUDIO SYNTH, PARTICLES, GAME & STORY
+         ========================================== -->
+    <script>
+        /* =========================================================
+           1. BUILT-IN WEB AUDIO API SYNTHESIZER (MUSIC BOX + PAD)
+           ========================================================= */
+        let audioCtx = null;
+        let isMusicPlaying = false;
+        let musicInterval = null;
+        let noteStep = 0;
+        let currentMoodIndex = 0;
+
+        // Two dreamy romantic chord/melody progressions (Frequency in Hz)
+        const MELODY_MOODS = [
+            {
+                name: "Senja Manis",
+                tempo: 520,
+                // Fmaj7 - Em7 - Dm7 - Cmaj7 dreamy music box notes
+                notes: [
+                    523.25, 659.25, 783.99, 1046.50, // C5 E5 G5 C6
+                    493.88, 659.25, 783.99, 987.77,  // B4 E5 G5 B5
+                    440.00, 587.33, 698.46, 880.00,  // A4 D5 F5 A5
+                    392.00, 523.25, 659.25, 783.99,  // G4 C5 E5 G5
+                    349.23, 523.25, 698.46, 880.00,  // F4 C5 F5 A5
+                    392.00, 587.33, 783.99, 987.77   // G4 D5 G5 B5
+                ],
+                padRoots: [174.61, 164.81, 146.83, 130.81, 174.61, 196.00]
+            },
+            {
+                name: "Bintang Malam",
+                tempo: 460,
+                notes: [
+                    587.33, 739.99, 880.00, 1174.66,
+                    493.88, 659.25, 880.00, 987.77,
+                    440.00, 554.37, 659.25, 880.00,
+                    392.00, 493.88, 587.33, 783.99
+                ],
+                padRoots: [146.83, 123.47, 110.00, 98.00]
+            }
+        ];
+
+        function initAudio() {
+            if (!audioCtx) {
+                const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+                audioCtx = new AudioContextClass();
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+        }
+
+        // Play a single dreamy kalimba / music-box chime note
+        function playMusicBoxNote(freq, volume = 0.08, duration = 1.9) {
+            if (!audioCtx) return;
+            const now = audioCtx.currentTime;
+
+            // Main sine + soft triangle overtone for bell/kalimba warmth
+            const osc1 = audioCtx.createOscillator();
+            const osc2 = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+
+            osc1.type = 'sine';
+            osc1.frequency.setValueAtTime(freq, now);
+
+            osc2.type = 'triangle';
+            osc2.frequency.setValueAtTime(freq * 2, now); // Octave harmonic
+
+            const harmonicGain = audioCtx.createGain();
+            harmonicGain.gain.setValueAtTime(0.15, now);
+
+            // Envelope: soft attack, long dreamy decay
+            gain.gain.setValueAtTime(0.001, now);
+            gain.gain.linearRampToValueAtTime(volume, now + 0.03);
+            gain.gain.exponentialRampToValueAtTime(0.0008, now + duration);
+
+            osc1.connect(gain);
+            osc2.connect(harmonicGain);
+            harmonicGain.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            osc1.start(now);
+            osc2.start(now);
+            osc1.stop(now + duration);
+            osc2.stop(now + duration);
+        }
+
+        // Play warm background pad on chord changes
+        function playWarmPad(freq, duration = 2.4) {
+            if (!audioCtx) return;
+            const now = audioCtx.currentTime;
+            const osc = audioCtx.createOscillator();
+            const gain = audioCtx.createGain();
+
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, now);
+
+            gain.gain.setValueAtTime(0.001, now);
+            gain.gain.linearRampToValueAtTime(0.035, now + 0.6);
+            gain.gain.exponentialRampToValueAtTime(0.0008, now + duration);
+
+            osc.connect(gain);
+            gain.connect(audioCtx.destination);
+
+            osc.start(now);
+            osc.stop(now + duration);
+        }
+
+        // Cute UI sound effects (sparkle, pop, heart chime)
+        function playSfx(type) {
+            try {
+                initAudio();
+                if (type === 'sparkle') {
+                    playMusicBoxNote(1046.50, 0.06, 0.5);
+                    setTimeout(() => playMusicBoxNote(1318.51, 0.06, 0.7), 70);
+                    setTimeout(() => playMusicBoxNote(1567.98, 0.07, 0.9), 140);
+                } else if (type === 'pop') {
+                    playMusicBoxNote(659.25, 0.07, 0.4);
+                } else if (type === 'key') {
+                    playMusicBoxNote(783.99, 0.08, 0.6);
+                    setTimeout(() => playMusicBoxNote(987.77, 0.08, 0.6), 90);
+                    setTimeout(() => playMusicBoxNote(1174.66, 0.09, 1.0), 180);
+                } else if (type === 'dodge') {
+                    playMusicBoxNote(587.33, 0.05, 0.25);
+                }
+            } catch (e) {
+                // Ignore audio errors if blocked
+            }
+        }
+
+        function startMusicLoop() {
+            initAudio();
+            if (isMusicPlaying) return;
+            isMusicPlaying = true;
+            updateMusicUI();
+
+            const scheduleNextNote = () => {
+                if (!isMusicPlaying) return;
+                const mood = MELODY_MOODS[currentMoodIndex];
+                const noteFreq = mood.notes[noteStep % mood.notes.length];
+                playMusicBoxNote(noteFreq, 0.075, 2.1);
+
+                // Every 4 notes, trigger warm ambient pad root
+                if (noteStep % 4 === 0) {
+                    const padIndex = Math.floor(noteStep / 4) % mood.padRoots.length;
+                    playWarmPad(mood.padRoots[padIndex], 2.5);
+                }
+
+                noteStep++;
+                musicInterval = setTimeout(scheduleNextNote, mood.tempo);
+            };
+
+            scheduleNextNote();
+        }
+
+        function stopMusicLoop() {
+            isMusicPlaying = false;
+            if (musicInterval) clearTimeout(musicInterval);
+            updateMusicUI();
+        }
+
+        function toggleMusic() {
+            if (isMusicPlaying) {
+                stopMusicLoop();
+            } else {
+                startMusicLoop();
+            }
+        }
+
+        function cycleMelodyMood() {
+            currentMoodIndex = (currentMoodIndex + 1) % MELODY_MOODS.length;
+            noteStep = 0;
+            document.getElementById('melodyMoodText').textContent = `Nada: ${MELODY_MOODS[currentMoodIndex].name}`;
+            playSfx('sparkle');
+        }
+
+        function updateMusicUI() {
+            const soundWave = document.getElementById('soundWave');
+            const statusText = document.getElementById('musicStatusText');
+            const moodBtn = document.getElementById('melodyMoodBtn');
+            if (isMusicPlaying) {
+                soundWave.classList.add('playing');
+                statusText.textContent = 'Musik Langit: Menyala';
+                moodBtn.classList.remove('hidden');
+                moodBtn.classList.add('flex');
+            } else {
+                soundWave.classList.remove('playing');
+                statusText.textContent = 'Musik Langit: Jeda';
+            }
+        }
+
+        /* =========================================================
+           2. INTERACTIVE CANVAS PARTICLE SYSTEM (Stardust, Hearts & Sakura)
+           ========================================================= */
+        const canvas = document.getElementById('skyCanvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let burstParticles = [];
+        let pointer = { x: -1000, y: -1000, radius: 95 };
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        class SkyParticle {
+            constructor() {
+                this.reset(true);
+            }
+
+            reset(initial = false) {
+                this.x = Math.random() * canvas.width;
+                this.y = initial ? Math.random() * canvas.height : canvas.height + 20;
+                this.size = Math.random() * 5 + 2.5;
+                this.speedY = -(Math.random() * 0.55 + 0.2);
+                this.speedX = (Math.random() - 0.5) * 0.4;
+                this.alpha = Math.random() * 0.65 + 0.25;
+                this.angle = Math.random() * Math.PI * 2;
+                this.spin = (Math.random() - 0.5) * 0.02;
+
+                // Particle types: 55% stardust, 25% pastel heart, 20% sakura petal
+                const rand = Math.random();
+                if (rand < 0.55) {
+                    this.type = 'star';
+                    this.color = Math.random() > 0.4 ? '#ffffff' : '#ffe57f';
+                } else if (rand < 0.80) {
+                    this.type = 'heart';
+                    this.color = Math.random() > 0.5 ? '#ff8fab' : '#ffc2d1';
+                } else {
+                    this.type = 'petal';
+                    this.color = '#ffd1dc';
+                }
+            }
+
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX + Math.sin(this.y * 0.015) * 0.25;
+                this.angle += this.spin;
+
+                // Gentle cursor/touch interaction (soft repel & swirl)
+                const dx = this.x - pointer.x;
+                const dy = this.y - pointer.y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                if (dist < pointer.radius && dist > 0) {
+                    const force = (pointer.radius - dist) / pointer.radius;
+                    this.x += (dx / dist) * force * 2.2;
+                    this.y += (dy / dist) * force * 2.2;
+                }
+
+                if (this.y < -25 || this.x < -30 || this.x > canvas.width + 30) {
+                    this.reset(false);
+                }
+            }
+
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.alpha;
+                ctx.translate(this.x, this.y);
+                ctx.rotate(this.angle);
+
+                if (this.type === 'star') {
+                    ctx.fillStyle = this.color;
+                    ctx.shadowColor = this.color;
+                    ctx.shadowBlur = 8;
+                    ctx.beginPath();
+                    ctx.arc(0, 0, this.size * 0.6, 0, Math.PI * 2);
+                    ctx.fill();
+                } else if (this.type === 'heart') {
+                    drawMiniHeart(ctx, 0, 0, this.size * 1.4, this.color);
+                } else {
+                    // Sakura Petal oval
+                    ctx.fillStyle = this.color;
+                    ctx.beginPath();
+                    ctx.ellipse(0, 0, this.size * 1.2, this.size * 0.65, 0, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                ctx.restore();
+            }
+        }
+
+        class BurstParticle {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                const angle = Math.random() * Math.PI * 2;
+                const speed = Math.random() * 3.5 + 1.2;
+                this.vx = Math.cos(angle) * speed;
+                this.vy = Math.sin(angle) * speed - 0.8;
+                this.size = Math.random() * 6 + 4;
+                this.alpha = 1;
+                this.decay = Math.random() * 0.018 + 0.014;
+                this.isHeart = Math.random() > 0.35;
+                const colors = ['#ff8fab', '#fb6f92', '#ffe57f', '#ffffff', '#a2d2ff'];
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+            }
+
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                this.vy += 0.04; // slight gravity
+                this.alpha -= this.decay;
+            }
+
+            draw() {
+                if (this.alpha <= 0) return;
+                ctx.save();
+                ctx.globalAlpha = Math.max(0, this.alpha);
+                ctx.translate(this.x, this.y);
+                if (this.isHeart) {
+                    drawMiniHeart(ctx, 0, 0, this.size, this.color);
+                } else {
+                    ctx.fillStyle = this.color;
+                    ctx.beginPath();
+                    ctx.arc(0, 0, this.size * 0.45, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                ctx.restore();
+            }
+        }
+
+        function drawMiniHeart(context, x, y, size, color) {
+            context.fillStyle = color;
+            context.beginPath();
+            const topCurveHeight = size * 0.3;
+            context.moveTo(x, y + topCurveHeight);
+            context.bezierCurveTo(x, y, x - size / 2, y, x - size / 2, y + topCurveHeight);
+            context.bezierCurveTo(x - size / 2, y + (size + topCurveHeight) / 2, x, y + (size + topCurveHeight) / 1.4, x, y + size);
+            context.bezierCurveTo(x, y + (size + topCurveHeight) / 1.4, x + size / 2, y + (size + topCurveHeight) / 2, x + size / 2, y + topCurveHeight);
+            context.bezierCurveTo(x + size / 2, y, x, y, x, y + topCurveHeight);
+            context.closePath();
+            context.fill();
+        }
+
+        function spawnBurst(x, y, count = 14) {
+            for (let i = 0; i < count; i++) {
+                burstParticles.push(new BurstParticle(x, y));
+            }
+        }
+
+        function spawnHeartShower() {
+            playSfx('sparkle');
+            for (let i = 0; i < 6; i++) {
+                setTimeout(() => {
+                    const rx = Math.random() * (canvas.width * 0.8) + canvas.width * 0.1;
+                    const ry = Math.random() * (canvas.height * 0.6) + canvas.height * 0.2;
+                    spawnBurst(rx, ry, 18);
+                }, i * 160);
+            }
+        }
+
+        // Initialize ambient particles
+        const PARTICLE_COUNT = window.innerWidth < 640 ? 42 : 75;
+        for (let i = 0; i < PARTICLE_COUNT; i++) {
+            particles.push(new SkyParticle());
+        }
+
+        function animateCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let p of particles) {
+                p.update();
+                p.draw();
+            }
+            for (let i = burstParticles.length - 1; i >= 0; i--) {
+                burstParticles[i].update();
+                burstParticles[i].draw();
+                if (burstParticles[i].alpha <= 0) {
+                    burstParticles.splice(i, 1);
+                }
+            }
+            requestAnimationFrame(animateCanvas);
+        }
+
+        // Parallax + Pointer Tracking
+        const parallaxLayers = document.querySelectorAll('.parallax-layer');
+        function handlePointerMove(clientX, clientY) {
+            pointer.x = clientX;
+            pointer.y = clientY;
+
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+            parallaxLayers.forEach(layer => {
+                const depth = parseFloat(layer.getAttribute('data-depth')) || 0.04;
+                const moveX = (clientX - centerX) * depth;
+                const moveY = (clientY - centerY) * depth;
+                layer.style.transform = `translate3d(${moveX}px, ${moveY}px, 0)`;
+            });
+        }
+
+        window.addEventListener('mousemove', e => handlePointerMove(e.clientX, e.clientY));
+        window.addEventListener('touchmove', e => {
+            if (e.touches.length > 0) {
+                handlePointerMove(e.touches[0].clientX, e.touches[0].clientY);
+            }
+        }, { passive: true });
+
+        window.addEventListener('click', e => {
+            spawnBurst(e.clientX, e.clientY, 12);
+        });
+
+        /* =========================================================
+           3. STORY FLOW & STAGE NAVIGATION
+           ========================================================= */
+        function enterCloudGate(e) {
+            if (e) spawnBurst(e.clientX, e.clientY, 24);
+            startMusicLoop();
+            playSfx('sparkle');
+            document.getElementById('progressDots').classList.remove('opacity-0');
+            goToStage(2);
+        }
+
+        function goToStage(stageNumber) {
+            playSfx('pop');
+            for (let i = 1; i <= 4; i++) {
+                const el = document.getElementById(`stage${i}`);
+                const dot = document.getElementById(`dot-${i}`);
+                if (i === stageNumber) {
+                    el.classList.remove('stage-hidden');
+                    el.classList.add('stage-active');
+                    if (dot) {
+                        dot.classList.remove('bg-white/70', 'w-2.5');
+                        dot.classList.add('bg-rose-400', 'w-6');
+                    }
+                } else {
+                    el.classList.remove('stage-active');
+                    el.classList.add('stage-hidden');
+                    if (dot) {
+                        dot.classList.remove('bg-rose-400', 'w-6');
+                        dot.classList.add('bg-white/70', 'w-2.5');
+                    }
+                }
+            }
+
+            if (stageNumber === 3) {
+                initCloudHideAndSeek();
+            }
+        }
+
+        // Stage 2: Interactive Mood Selection
+        let selectedMoodLabel = "Senyum manis";
+        const MOOD_RESPONSES = {
+            tired: {
+                label: "Lagi capek banget 🥺",
+                emoji: '🫂☁️',
+                text: 'Sini istirahat dulu di atas awan. Tarik napas pelan-pelan ya... Nggak apa-apa kalau hari ini rasanya berat. Kamu udah hebat banget bisa bertahan dan ngelewatin semuanya sampai detik ini. Bahu kamu boleh istirahat sekarang.',
+                skyClass: 'mood-warm'
+            },
+            happy: {
+                label: "Lagi seneng & baik 🥰",
+                emoji: '🌸✨',
+                text: 'Syukurlah! Pantesan langit dari tadi warnanya lebih cerah dan hangat, ternyata ketularan energi dan senyum kamu. Pertahanin terus ya senyum manisnya, soalnya itu candu banget.',
+                skyClass: 'mood-bright'
+            },
+            lonely: {
+                label: "Butuh ditemenin ☁️",
+                emoji: '🌙💖',
+                text: 'Pas banget kamu mampir ke sini. Walau pengirimnya masih sembunyi di balik awan, anggap aja angin sepoi-sepoi dan melodi kotak musik ini lagi nemenin kamu duduk santai.',
+                skyClass: 'mood-warm'
+            }
+        };
+
+        function selectMood(moodKey) {
+            playSfx('sparkle');
+            const data = MOOD_RESPONSES[moodKey];
+            selectedMoodLabel = data.label;
+            const box = document.getElementById('moodResponseBox');
+            const emojiEl = document.getElementById('moodResponseEmoji');
+            const textEl = document.getElementById('moodResponseText');
+            const nextBtn = document.getElementById('toStage3Btn');
+
+            // Highlight selected mood button
+            ['tired', 'happy', 'lonely'].forEach(k => {
+                const btn = document.getElementById(`moodBtn-${k}`);
+                if (k === moodKey) {
+                    btn.classList.add('ring-2', 'ring-rose-400', 'bg-pink-50');
+                } else {
+                    btn.classList.remove('ring-2', 'ring-rose-400', 'bg-pink-50');
+                }
+            });
+
+            // Shift sky ambiance
+            document.body.classList.remove('mood-warm', 'mood-bright');
+            document.body.classList.add(data.skyClass);
+
+            emojiEl.textContent = data.emoji;
+            textEl.textContent = data.text;
+            box.classList.remove('hidden');
+            nextBtn.classList.remove('hidden');
+            nextBtn.classList.add('flex');
+        }
+
+        let hugCount = 0;
+        function sendCloudHug(e) {
+            hugCount++;
+            playSfx('key');
+            if (e) spawnBurst(e.clientX, e.clientY, 22);
+            const label = document.getElementById('hugBtnLabel');
+            label.textContent = `Pelukan Awan Terkirim (${hugCount}x) 🥰✨`;
+        }
+
+        /* =========================================================
+           4. COMBINED MINI-GAME: OPSI B (HIDE & SEEK) + OPSI C (RUNAWAY BUTTON)
+           ========================================================= */
+        let keysFound = 0;
+        let cloudItemsData = [];
+
+        const KEY_COMPLIMENTS = [
+            "💖 Kunci #1: Tau nggak? Cara kamu ketawa dan senyum itu hal paling favorit buat diperhatiin.",
+            "💖 Kunci #2: Kamu itu kayak senja cerah di atas awan—tenang, hangat, dan bikin nggak mau berpaling.",
+            "💖 Kunci #3: Makasih ya udah jadi diri kamu yang sehangat dan semanis ini setiap hari."
+        ];
+
+        const DECOY_MESSAGES = [
+            { icon: "🐱☁️", text: "Zonk gemes! Cuma ada kucing oren lagi molor di atas awan~" },
+            { icon: "🍬🌸", text: "Isinya permen kapas rasa stroberi! Coba ketuk awan sebelahnya." },
+            { icon: "🌈✨", text: "Ada pelangi nyasar! Kuncinya belum di sini, cari lagi yuk." },
+            { icon: "🧸💤", text: "Boneka beruang lagi ngumpet, coba awan yang lain ya!" },
+            { icon: "🍓🥛", text: "Segelas susu stroberi dingin! Segar sih, tapi bukan kunci hati hehe." },
+            { icon: "🦋💫", text: "Kupu-kupu biru terbang lewat~ Ayo ketuk awan lainnya!" }
+        ];
+
+        function initCloudHideAndSeek() {
+            keysFound = 0;
+            document.getElementById('gamePhaseA').classList.remove('hidden');
+            document.getElementById('gamePhaseB').classList.add('hidden');
+            updateKeyProgressUI();
+
+            // Create 3 keys and 6 decoys, then shuffle
+            const items = [
+                { isKey: true },
+                { isKey: true },
+                { isKey: true },
+                ...DECOY_MESSAGES.map(d => ({ isKey: false, decoy: d }))
+            ];
+
+            for (let i = items.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [items[i], items[j]] = [items[j], items[i]];
+            }
+            cloudItemsData = items;
+
+            const grid = document.getElementById('cloudGrid');
+            grid.innerHTML = '';
+
+            cloudItemsData.forEach((item, idx) => {
+                const btn = document.createElement('button');
+                btn.className = 'cloud-item relative h-20 sm:h-24 rounded-2xl bg-white/75 border border-white shadow-sm flex flex-col items-center justify-center p-2 overflow-hidden group';
+                btn.innerHTML = `
+                    <svg class="w-14 h-10 sm:w-16 sm:h-11 text-sky-200 group-hover:text-pink-200 fill-current transition-colors drop-shadow-sm" viewBox="0 0 120 80">
+                        <path d="M28,65 Q10,65 10,48 Q10,34 25,32 Q32,12 54,12 Q76,12 84,30 Q98,25 108,35 Q118,42 114,55 Q110,65 95,65 Z"/>
+                    </svg>
+                    <span class="text-[11px] font-bold text-slate-400 group-hover:text-rose-400 mt-0.5">Awan #${idx + 1}</span>
+                `;
+                btn.onclick = (e) => handleCloudTap(idx, btn, e);
+                grid.appendChild(btn);
+            });
+        }
+
+        function handleCloudTap(idx, btnEl, event) {
+            const item = cloudItemsData[idx];
+            if (item.opened) return;
+            item.opened = true;
+            btnEl.classList.add('popped');
+
+            const toast = document.getElementById('cloudMessageToast');
+
+            if (item.isKey) {
+                keysFound++;
+                playSfx('key');
+                if (event) spawnBurst(event.clientX, event.clientY, 22);
+
+                btnEl.innerHTML = `
+                    <div class="text-2xl sm:text-3xl animate-bounce">💖🔑</div>
+                    <span class="text-[11px] font-bold text-rose-500">Kunci #${keysFound}</span>
+                `;
+                btnEl.classList.add('bg-pink-50/90', 'border-rose-300');
+
+                toast.innerHTML = `<span class="text-rose-600 font-bold">${KEY_COMPLIMENTS[keysFound - 1]}</span>`;
+                updateKeyProgressUI();
+
+                if (keysFound === 3) {
+                    setTimeout(() => {
+                        transitionToPhaseB();
+                    }, 1300);
+                }
+            } else {
+                playSfx('pop');
+                btnEl.innerHTML = `
+                    <div class="text-xl sm:text-2xl">${item.decoy.icon}</div>
+                    <span class="text-[10px] font-semibold text-slate-400">Kosong~</span>
+                `;
+                toast.innerHTML = `<span class="text-slate-600">${item.decoy.icon} ${item.decoy.text}</span>`;
+            }
+        }
+
+        function updateKeyProgressUI() {
+            const slots = document.querySelectorAll('#keyCounterIcons .key-slot');
+            slots.forEach((slot, i) => {
+                if (i < keysFound) {
+                    slot.classList.remove('text-pink-300', 'bg-pink-100');
+                    slot.classList.add('bg-rose-500', 'text-white', 'scale-110', 'shadow-sm');
+                } else {
+                    slot.classList.add('text-pink-300', 'bg-pink-100');
+                    slot.classList.remove('bg-rose-500', 'text-white', 'scale-110', 'shadow-sm');
+                }
+            });
+        }
+
+        function transitionToPhaseB() {
+            playSfx('sparkle');
+            document.getElementById('gamePhaseA').classList.add('hidden');
+            document.getElementById('gamePhaseB').classList.remove('hidden');
+        }
+
+        // Phase 3B: Playful Runaway Button (Opsi C)
+        let dodgeCount = 0;
+        const RUNAWAY_LABELS = [
+            "Eits nggak kena! 😝",
+            "Jangan bohong hayo~ 🤭",
+            "Yakin nggak senyum? 👀",
+            "Awan ini licin tau! ☁️",
+            "Klik tombol pink aja ❤️",
+            "Tombol ini lagi malu 🙈"
+        ];
+
+        function dodgeButton(e) {
+            if (e) {
+                e.preventDefault();
+                e.stopPropagation();
+            }
+            playSfx('dodge');
+
+            const arena = document.getElementById('runawayArena');
+            const noBtn = document.getElementById('runawayNoBtn');
+            const yesBtn = document.getElementById('yesSmileBtn');
+
+            const arenaRect = arena.getBoundingClientRect();
+            const btnWidth = noBtn.offsetWidth || 140;
+            const btnHeight = noBtn.offsetHeight || 44;
+
+            // Calculate random safe position inside arena
+            const maxX = Math.max(10, arenaRect.width - btnWidth - 16);
+            const maxY = Math.max(10, arenaRect.height - btnHeight - 16);
+
+            const randomX = Math.floor(Math.random() * maxX) + 8;
+            const randomY = Math.floor(Math.random() * maxY) + 8;
+
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = `${randomX}px`;
+            noBtn.style.top = `${randomY}px`;
+
+            noBtn.textContent = RUNAWAY_LABELS[dodgeCount % RUNAWAY_LABELS.length];
+            dodgeCount++;
+
+            // Slightly grow the positive button each time she tries to click No
+            const scale = Math.min(1.18, 1 + dodgeCount * 0.03);
+            yesBtn.style.transform = `scale(${scale})`;
+        }
+
+        function unlockFinalLetter(e) {
+            if (e) spawnBurst(e.clientX, e.clientY, 30);
+            playSfx('key');
+            goToStage(4);
+        }
+
+        /* =========================================================
+           5. STAGE 4: SKY WISH / LANTERN REPLY (WHATSAPP) & EASTER EGGS
+           ========================================================= */
+        const TARGET_WA_NUMBER = "6289674037725";
+
+        function sendSkyWish(e) {
+            const input = document.getElementById('wishInput');
+            const feedbackContainer = document.getElementById('wishSentContainer');
+            const feedback = document.getElementById('wishSentFeedback');
+            const waLink = document.getElementById('waDirectLink');
+            const text = input.value.trim();
+
+            if (!text) {
+                input.placeholder = "Tulis satu kata atau kalimat manis dulu ya... ✨";
+                input.focus();
+                return;
+            }
+
+            playSfx('sparkle');
+            if (e && e.clientX) spawnBurst(e.clientX, e.clientY, 26);
+
+            // Format romantic WhatsApp message including her mood & wish
+            const waMessage = `Halo Pengagum Langitku! 🌤️✨\n\nAku udah buka surat rahasia di atas awan dari kamu.\n💭 *Kabar aku hari ini:* ${selectedMoodLabel}\n💌 *Titipan pesan/harapanku:* "${text}"`;
+            const waUrl = `https://wa.me/${TARGET_WA_NUMBER}?text=${encodeURIComponent(waMessage)}`;
+
+            // Create floating glowing paper plane / sky lantern element
+            const container = document.getElementById('flyingLanternContainer');
+            const lantern = document.createElement('div');
+            lantern.className = 'fly-away glass-pill px-5 py-3 rounded-2xl border-2 border-pink-300 shadow-xl flex items-center gap-2.5 text-rose-600 font-bold text-sm';
+            lantern.innerHTML = `
+                <span>✈️</span>
+                <span>"${text}"</span>
+                <span>✨</span>
+            `;
+            container.appendChild(lantern);
+
+            setTimeout(() => {
+                lantern.remove();
+            }, 3300);
+
+            waLink.href = waUrl;
+            feedback.textContent = `✨ Pesanmu "${text}" sudah diterbangkan ke awan tertinggi & siap diteruskan ke WhatsApp!`;
+            feedbackContainer.classList.remove('hidden');
+            input.value = '';
+
+            // Automatically open WhatsApp after short sky animation delay
+            setTimeout(() => {
+                window.open(waUrl, '_blank', 'noopener,noreferrer');
+            }, 900);
+        }
+
+        // Easter Egg #1: Secret Star (3 clicks to unlock)
+        let starClicks = 0;
+        let starResetTimer = null;
+
+        function handleSecretStarClick(e) {
+            e.stopPropagation();
+            starClicks++;
+            spawnBurst(e.clientX, e.clientY, 16);
+
+            const badge = document.getElementById('starHintBadge');
+            badge.classList.remove('opacity-0');
+            badge.textContent = `✨ ${starClicks}/3`;
+
+            if (starResetTimer) clearTimeout(starResetTimer);
+
+            if (starClicks >= 3) {
+                playSfx('key');
+                starClicks = 0;
+                badge.textContent = `💖 Terbuka!`;
+                openModal('secretStarModal');
+                setTimeout(() => badge.classList.add('opacity-0'), 1500);
+            } else {
+                playSfx('pop');
+                starResetTimer = setTimeout(() => {
+                    starClicks = 0;
+                    badge.classList.add('opacity-0');
+                }, 4000);
+            }
+        }
+
+        // Easter Egg #2: Clue Modal
+        function openClueModal(e) {
+            if (e) {
+                e.stopPropagation();
+                spawnBurst(e.clientX, e.clientY, 18);
+            }
+            playSfx('sparkle');
+            openModal('clueModal');
+        }
+
+        function revealExtraClue() {
+            playSfx('key');
+            document.getElementById('extraClueText').classList.remove('hidden');
+            document.getElementById('revealClueBtn').classList.add('hidden');
+        }
+
+        function openModal(id) {
+            const modal = document.getElementById(id);
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal(id) {
+            playSfx('pop');
+            const modal = document.getElementById(id);
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Start Canvas Animation on Window Load
+        window.onload = function () {
+            animateCanvas();
+        };
+    </script>
+</body>
+</html>
